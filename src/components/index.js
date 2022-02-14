@@ -1,7 +1,4 @@
-import Header from './components/Header/Header.tsx';
-import Categories from './components/Categories/Categories.jsx';
 
-export {
-    Header,
-    Categories,
-};
+export { default as Header } from './Header/Header.tsx';
+export { default as Categories } from './Categories/Categories.jsx';
+export { default as SortPopup } from './SortPopup/SortPopup.jsx';
