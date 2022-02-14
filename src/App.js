@@ -1,5 +1,4 @@
-import Header from './components/Header/Header.tsx';
-import ShoppingButton from './components/button/ShoppingButton.tsx';
+import { Header, Categories } from './components';
 
 
 import './scss/app.scss'

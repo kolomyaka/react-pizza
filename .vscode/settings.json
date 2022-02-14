@@ -1,5 +1,10 @@
 {
     "deno.enable": true,
     "deno.lint": true,
-    "deno.unstable": true
+    "deno.unstable": true,
+    "editor.linkedEditing": true,
+    "javascript.suggest.autoImports": true,
+    "typescript.suggest.autoImports": true,
+    "javascript.updateImportsOnFileMove.enabled": "always",
+    "typescript.updateImportsOnFileMove.enabled": "always",
 }
