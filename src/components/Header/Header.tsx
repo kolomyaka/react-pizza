@@ -1,7 +1,9 @@
 import pizzaLogo from '../../assets/img/pizza-logo.svg';
-import ShoppingButton from "./button/ShoppingButton"
+import ShoppingButton from "../button/ShoppingButton.tsx";
+
 
 const Header = () => {
+    
     return (
     <div className="header">
         <div className="container">
