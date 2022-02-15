@@ -13,7 +13,7 @@ const PizzaBlock = ({ name, price, imageUrl, types, sizes }) => {
     // Используем хук для изменения активного класса у элементов
     const [activeType, setActiveType] = useState(types[0])
     const [activeSize, setActiveSize] = useState(sizes[0])
-
+    
     // Функции для переключения классов
     const onSelectType = (index) => {
         setActiveType(index)
@@ -22,7 +22,7 @@ const PizzaBlock = ({ name, price, imageUrl, types, sizes }) => {
     const onSelectSize = (index) => {
         setActiveSize(index)
     }
-
+    
     return (
         <div className="pizza-block">
             <img className='pizza-block__image'
@@ -32,7 +32,7 @@ const PizzaBlock = ({ name, price, imageUrl, types, sizes }) => {
             <h4 className="pizza-block__title">{name}</h4>
             <div className="pizza-block__selector">
                 <ul>
-                    {
+                    {   
                         availableTypes.map((type, index) => 
                         <li key={type} onClick={() => onSelectType(index)}
                          className={classNames({
@@ -76,8 +76,22 @@ const PizzaBlock = ({ name, price, imageUrl, types, sizes }) => {
     )
 }
     
+// TODO   do on TS!
+PizzaBlock.propTypes = {
+    name : PropTypes.string,
+    imageUrl : PropTypes.string,
+    price : PropTypes.number,
+    types : PropTypes.arrayOf(PropTypes.number),
+    sizes : PropTypes.arrayOf(PropTypes.number)
+}
 
-
+PizzaBlock.defaultProps = {
+    types : [],
+    sizes : [],
+    name : '---',
+    imageUrl : '---',
+    price : '999.999'
+};
 
 
 export default PizzaBlock

@@ -15,14 +15,14 @@ function App() {
     // Отправляем запрос для получения db
     
     // 1. Запрос через fetch
-      // fetch('http://localhost:3001/db.json')
+      // fetch('http://localhost:3000/db.json')
       // .then((res) => res.json())
       // .then(json => {
       //   setPizzas(json.pizzas)
       // })
 
     // 2. Запрос через Axios
-    axios.get('http://localhost:3001/db.json').then(({data}) => {
+    axios.get('http://localhost:3000/db.json').then(({data}) => {
       setPizzas(data.pizzas)
     });
   },[]);
