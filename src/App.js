@@ -3,76 +3,39 @@ import { Home, Cart } from './pages'
 import React, { useEffect, useState } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import axios from 'axios'
-import { connect } from 'react-redux';
-
-import './scss/app.scss'
-import { setPizzas as setPizzasAction } from './redux/actions/pizzas'
-
-// function App() {
+import { useDispatch } from 'react-redux';
 
 
-//   useEffect(() => {
-//     // Отправляем запрос для получения db
-    
-//     // 1. Запрос через fetch
-//       // fetch('http://localhost:3000/db.json')
-//       // .then((res) => res.json())
-//       // .then(json => {
-//       //   setPizzas(json.pizzas)
-//       // })
+import './scss/app.scss';
+import { setPizzas } from './redux/actions/pizzas'
 
-//     // 2. Запрос через Axios
-//     axios.get('http://localhost:3000/db.json').then(({data}) => {
-//       setPizzas(data.pizzas)
-//     });
-//   },[]);
-
-
-//   return (
-//     <div className="wrapper">
-//     <Header />
-//     <div className="content">
-//       <Routes >
-//         <Route path='/' element={<Home pizzas={pizzas}/>} />
-//         <Route path='/cart' element={<Cart />} />
-//       </Routes>
-//     </div>
-//   </div>
-//   );
-// }
-
-const pizzas = [];
-
-class App extends React.Component {
+function App() {
   
-  componentDidMount() {
-    axios.get('http://localhost:3000/db.json').then(({data}) => {
-      this.props.setPizzas(data.pizzas);
-    });
-  }
+  // Инструмент для передачи данных в redux
+  const dispatch = useDispatch();  
+  
+  
 
-  render () {
-    console.log(this.props.items);
-    return (
-      <div className="wrapper">
-      <Header />
-      <div className="content">
-        <Routes >
-          <Route path='/' element={<Home pizzas={this.props.items}/>} />
-          <Route path='/cart' element={<Cart />} />
-        </Routes>
-      </div>
+  useEffect(() => {
+    axios.get('http://localhost:3000/db.json').then(({ data }) => {
+      dispatch(setPizzas(data.pizzas));  // Диспатч уведомляет redux об изменении
+    });
+  }, []);
+
+
+  return (
+    <div className="wrapper">
+    <Header />
+    <div className="content">
+      <Routes >
+        <Route path='/' element={<Home />} />
+        <Route path='/cart' element={<Cart />} />
+      </Routes>
     </div>
-    )
-  }
+  </div>
+  );
 }
 
-const mapStateToProps = (state) => ({
-  items : state.pizzas.items
-})
+export default App;
 
-const mapDispatchToProps = (dispatch) => ({
-  setPizzas : (items) => dispatch(setPizzasAction(items))
-})
 
-export default connect(mapStateToProps, mapDispatchToProps)(App);

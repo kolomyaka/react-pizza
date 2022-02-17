@@ -1,7 +1,7 @@
 
 
 const initialState = {
-    items : [],
+    pizzas : [],
     isLoaded : false,
 }
 
@@ -11,7 +11,7 @@ const pizzasReducer = (state = initialState, action) => {
   case 'SET_PIZZAS':
     return {
         ...state,
-        items: action.payload
+        pizzas: action.payload
         // isLoaded : true 
     };
 

@@ -1,5 +1,5 @@
-export const setPizzas = ( items ) => ({
+export const setPizzas = ( pizzas ) => ({
     type : 'SET_PIZZAS',
-    payload : items
+    payload : pizzas
 });
 
