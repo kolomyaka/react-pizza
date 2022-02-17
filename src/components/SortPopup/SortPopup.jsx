@@ -1,11 +1,12 @@
 import React, {useState, useEffect, useRef} from 'react'
 
-const SortPopup = ({items}) => {
+const SortPopup = ({ items }) => {
 
     const [visiblePopup, setVisiblePopup] = useState(false)
     const [sortByItem, setSortByItem] = useState('популярности')
     const sortRef = useRef();  // Сохраняем ссылку на DOM-el
     const [ActiveItem, setActiveItem] = useState(0);
+    const ActiveLable = items.name;
 
 
     const toggleVisiblePop = (e) => {
@@ -51,9 +52,9 @@ const SortPopup = ({items}) => {
             {visiblePopup && <div className="sort__popup">
                 <ul onClick={(e) => toggleVisiblePop(e)}>
                 {
-                    items && items.map((item, index) => 
-                    <li className={ActiveItem === index ? 'active' : ''} onClick={() => onSelectItem(index)} key={`${item}_${index}`}>
-                        {item}
+                    items && items.map((obj, index) => 
+                    <li className={ActiveItem === index ? 'active' : ''} onClick={() => onSelectItem(index)} key={`${obj.type}_${index}`}>
+                        {obj.name}
                     </li>  
                     )
                  }

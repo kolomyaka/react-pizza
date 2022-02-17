@@ -6,6 +6,7 @@ import PropTypes from 'prop-types'
 
 
 const PizzaBlock = ({ name, price, imageUrl, types, sizes }) => {
+    
     // Создаем массив с данными для отображения(Временно)
     const availableTypes = ['тонкое', "традиционное"]
     const availableSize = [26, 30, 40]
