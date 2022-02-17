@@ -1,6 +1,10 @@
 import React, {useState, useEffect, useRef} from 'react'
 
-const SortPopup = ({ items }) => {
+
+
+// Благодаря memo проверяем ссылку на props и мы можем не делать лишний рендер
+// Альтернатива в класс. компон. shouldComponentUpdate
+const SortPopup = React.memo(function SortPopup({ items }) {
 
     const [visiblePopup, setVisiblePopup] = useState(false)
     const [sortByItem, setSortByItem] = useState('популярности')
@@ -62,6 +66,6 @@ const SortPopup = ({ items }) => {
             </div>}
     </div>
     )
-}
+})
 
-export default SortPopup
+export default SortPopup;

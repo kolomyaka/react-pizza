@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react'
 
 
-function Categories({ items, onClickItem }) {
+const Categories = React.memo(function Categories({ items, onClickItem }) {
 
   // Состояние для активной кнопки фильтра.
   const [isActiveItem, setActiveItem] = useState(null);
@@ -27,6 +27,6 @@ function Categories({ items, onClickItem }) {
     </ul>
   </div>
   )
-}
+})
 
 export default Categories
