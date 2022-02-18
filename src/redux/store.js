@@ -1,10 +1,17 @@
-import { createStore } from 'redux';
+import { createStore, compose, applyMiddleware } from 'redux';
+import thunk from 'redux-thunk';
+import rootReducers from './reducers';
 
-import rootReducers from './reducers'
+// Т.к вторым параметром в createStore мы передаем devTools, то с помощью compose мы можем передать
+// Информацию о том, что хотим подключить thunk к нашему приложению
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 // Тут создаем хранилище нашего приложения ( Передаем корневой reducer)
-const store = createStore(rootReducers, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
+const store = createStore(
+    rootReducers,
+    composeEnhancers(applyMiddleware(thunk))
+    );
 
-window.store = store;
+
 
 export default store;
