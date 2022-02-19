@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useSelector } from 'react'
 import classNames from 'classnames'
 import PropTypes from 'prop-types'
 
@@ -11,6 +11,9 @@ const PizzaBlock = ({ name, price, imageUrl, types, sizes }) => {
     const availableTypes = ['тонкое', "традиционное"]
     const availableSize = [26, 30, 40]
     
+    // Используем хук для проверки загрузки наших блоков
+    
+
     // Используем хук для изменения активного класса у элементов
     const [activeType, setActiveType] = useState(types[0])
     const [activeSize, setActiveSize] = useState(sizes[0])
@@ -23,7 +26,7 @@ const PizzaBlock = ({ name, price, imageUrl, types, sizes }) => {
     const onSelectSize = (index) => {
         setActiveSize(index)
     }
-    
+
     return (
         <div className="pizza-block">
             <img className='pizza-block__image'

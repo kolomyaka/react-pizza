@@ -4,18 +4,14 @@ import React, {useState, useEffect, useRef} from 'react'
 
 // Благодаря memo проверяем ссылку на props и мы можем не делать лишний рендер
 // Альтернатива в класс. компон. shouldComponentUpdate
-const SortPopup = React.memo(function SortPopup({ items }) {
+const SortPopup = React.memo(function SortPopup({ items, onClickItem, activeSortType }) {
 
     const [visiblePopup, setVisiblePopup] = useState(false)
-    const [sortByItem, setSortByItem] = useState('популярности')
     const sortRef = useRef();  // Сохраняем ссылку на DOM-el
-    const [ActiveItem, setActiveItem] = useState(0);
-    const ActiveLable = items.name;
-
 
     const toggleVisiblePop = (e) => {
         setVisiblePopup(!visiblePopup)
-        setSortByItem(sortByItem => e.target.innerHTML)
+    
     }
 
     useEffect(() => {
@@ -29,11 +25,7 @@ const SortPopup = React.memo(function SortPopup({ items }) {
         }
     }
 
-    const onSelectItem = (index) => {
-        setActiveItem(index)
-    }
-
-
+   
     return (
         <div ref={sortRef} className="sort">
             <div className="sort__label">
@@ -51,13 +43,13 @@ const SortPopup = React.memo(function SortPopup({ items }) {
                     />
                 </svg>
                 <b>Сортировка по:</b>
-                <span onClick={toggleVisiblePop}>{sortByItem}</span>
+                <span onClick={toggleVisiblePop}>{items[activeSortType].name}</span>
             </div>
             {visiblePopup && <div className="sort__popup">
                 <ul onClick={(e) => toggleVisiblePop(e)}>
                 {
                     items && items.map((obj, index) => 
-                    <li className={ActiveItem === index ? 'active' : ''} onClick={() => onSelectItem(index)} key={`${obj.type}_${index}`}>
+                    <li className={activeSortType === index ? 'active' : ''} onClick={() => onClickItem(index)} key={`${obj.type}_${index}`}>
                         {obj.name}
                     </li>  
                     )

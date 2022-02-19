@@ -11,9 +11,14 @@ const pizzasReducer = (state = initialState, action) => {
   case 'SET_PIZZAS':
     return {
         ...state,
-        pizzas: action.payload
-        // isLoaded : true 
+        pizzas: action.payload,
+        isLoaded : true 
     };
+  case 'SET_LOADING':
+    return {
+      ...state,
+      isLoaded : action.payload
+    }
 
   default:
     return state;
