@@ -1,7 +1,8 @@
 
 const initialState = {
     category : null,
-    sortBy : 0
+    sortBy : 0,
+    sortByType : 'rating'
 };
 
 const filterReducer = (state = initialState, action) => {
@@ -10,7 +11,8 @@ const filterReducer = (state = initialState, action) => {
   case 'SET_SORT_BY':
     return {
         ...state,
-        sortBy : action.payload 
+        sortBy : action.payload.sortBy,
+        sortByType : action.payload.sortByType
     };
 
   case 'SET_CATEGORY': 

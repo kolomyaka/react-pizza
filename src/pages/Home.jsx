@@ -1,15 +1,14 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
-import axios from 'axios'
-import { setPizzas,fetchPizzas, setLoading } from '../redux/actions/pizzas'
+import { fetchPizzas } from '../redux/actions/pizzas'
  
 import { Categories, SortPopup, PizzaBlock, PizzaLoadingBlock } from '../components';
 import { setCategory, setSort } from '../redux/actions/filters'
 
 const categoriesNames = ["Мясные",'Вегетарианские',"Гриль","Острые","Закрытые"];
-const sortItems = [{ name : "популярности", type : 'popular' },
+const sortItems = [{ name : "популярности", type : 'rating' },
                    { name : "цене", type : 'price' },
-                   { name : "алфавиту" , type : 'alphabet' }]
+                   { name : "алфавиту" , type : 'name' }]
 
 const Home = () => {
     // Инструмент для передачи данных в redux.
@@ -24,22 +23,22 @@ const Home = () => {
     });
 
     // Из state берем данные по выбранной категории и сортировке.
-    const { category, sortBy } = useSelector(({ filters }) => filters);
+    const { category, sortBy, sortByType } = useSelector(({ filters }) => filters);
 
     // Функции для передачи данных в redux о выбранной категории/сортировки.
     const onSelectCategory = React.useCallback((index) => {
         dispatch(setCategory(index));
     }, [])
 
-    const onSelectSortBy = React.useCallback((index) => {
-        dispatch(setSort(index));
+    const onSelectSortBy = React.useCallback((index, sortByType) => {
+        dispatch(setSort(index, sortByType));
     }, [])
 
     // При изменении выбранных переменных повторно отправляем запрос о получении пицц.
     useEffect(() => {
-        dispatch(fetchPizzas())
-    }, [category, sortBy]);
-
+        dispatch(fetchPizzas(sortByType,category))
+    }, [sortBy, category,sortByType]);
+    
     return (
         <div className="container">
             <div className="content__top">

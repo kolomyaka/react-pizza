@@ -5,7 +5,7 @@ import React, {useState, useEffect, useRef} from 'react'
 // Благодаря memo проверяем ссылку на props и мы можем не делать лишний рендер
 // Альтернатива в класс. компон. shouldComponentUpdate
 const SortPopup = React.memo(function SortPopup({ items, onClickItem, activeSortType }) {
-
+    
     const [visiblePopup, setVisiblePopup] = useState(false)
     const sortRef = useRef();  // Сохраняем ссылку на DOM-el
 
@@ -49,7 +49,7 @@ const SortPopup = React.memo(function SortPopup({ items, onClickItem, activeSort
                 <ul onClick={(e) => toggleVisiblePop(e)}>
                 {
                     items && items.map((obj, index) => 
-                    <li className={activeSortType === index ? 'active' : ''} onClick={() => onClickItem(index)} key={`${obj.type}_${index}`}>
+                    <li className={activeSortType === index ? 'active' : ''} onClick={() => onClickItem(index, obj.type)} key={`${obj.type}_${index}`}>
                         {obj.name}
                     </li>  
                     )
