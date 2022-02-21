@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchPizzas } from '../redux/actions/pizzas'
- 
+
+import { fetchPizzas } from '../redux/actions/pizzas' 
 import { Categories, SortPopup, PizzaBlock, PizzaLoadingBlock } from '../components';
 import { setCategory, setSort } from '../redux/actions/filters'
 
@@ -28,11 +28,11 @@ const Home = () => {
     // Функции для передачи данных в redux о выбранной категории/сортировки.
     const onSelectCategory = React.useCallback((index) => {
         dispatch(setCategory(index));
-    }, [])
+    }, []);
 
     const onSelectSortBy = React.useCallback((index, sortByType) => {
         dispatch(setSort(index, sortByType));
-    }, [])
+    }, []);
 
     // При изменении выбранных переменных повторно отправляем запрос о получении пицц.
     useEffect(() => {

@@ -1,7 +1,6 @@
 import React, {useState, useEffect, useRef} from 'react'
 
 
-
 // Благодаря memo проверяем ссылку на props и мы можем не делать лишний рендер
 // Альтернатива в класс. компон. shouldComponentUpdate
 const SortPopup = React.memo(function SortPopup({ items, onClickItem, activeSortType }) {
@@ -20,7 +19,9 @@ const SortPopup = React.memo(function SortPopup({ items, onClickItem, activeSort
     // Если оставим их пустыми, то хук будет срабатывать только при первой отрисовки
     
     const handleOutsideClick = (e) => {
-        if (!e.path.includes(sortRef.current)) {
+        // Для работы в fireFox
+        const path = e.path || (e.composedPath && e.composedPath());
+        if (!path.includes(sortRef.current)) {
             setVisiblePopup(false);
         }
     }
