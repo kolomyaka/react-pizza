@@ -4,7 +4,7 @@ import { useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
 
 import { CartItem } from "../components";
-import { clearCart, deleteCurrentPizza } from '../redux/actions/cart'
+import { clearCart, deleteCurrentPizza, addOneItem, removeOneItem } from '../redux/actions/cart'
 import emptyCart from '../assets/img/empty-cart.png'
 
 const Cart = () => {
@@ -29,11 +29,19 @@ const Cart = () => {
     }
   }
 
+  const onPlusItem = (id) => {
+    dispatch(addOneItem(id))
+  }
+
+  const onRemoveItem = (id) => {
+    dispatch(removeOneItem(id))
+  }
+
   if (totalCount === 0) {
     return (
       <div className="container container--cart">
           <div className="cart cart--empty">
-            <h2>Корзина пустая <icon>😕</icon></h2>
+            <h2>Корзина пустая <i>😕</i></h2>
             <p>
               Вероятней всего, вы не заказывали ещё пиццу.<br />
               Для того, чтобы заказать пиццу, перейди на главную страницу.
@@ -135,7 +143,9 @@ const Cart = () => {
                   totalPrice={items[pizza.id].totalPrice} 
                   totalCount={items[pizza.id].items.length}
                   id={pizza.id}
-                  onRemove={removePizza} />
+                  onRemove={removePizza} 
+                  onPlusOneCartItem={onPlusItem}
+                  onRemoveOneCartItem={onRemoveItem} />
                 ))
               }
   
