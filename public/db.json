@@ -99,6 +99,96 @@
         "price": 285,
         "category": 1,
         "rating": 7
+      },
+      {
+        "id": 10,
+        "imageUrl": "https://dodopizza-a.akamaihd.net/static/Img/Products/5bf1c77b3ff44f93bb01c840ab35b033_292x292.jpeg",
+        "name": "Гавайская",
+        "types" : [0,1],
+        "sizes" : [26,40],
+        "price" : 395,
+        "category" : 4,
+        "rating": 7
+      },
+      {
+        "id": 11,
+        "imageUrl": "https://dodopizza-a.akamaihd.net/static/Img/Products/3e4065bbc610451f9441a9ced2426f23_584x584.jpeg",
+        "name": "Додо",
+        "types" : [1],
+        "sizes" : [26,30,40],
+        "price" : 445,
+        "category" : 0,
+        "rating": 7
+      },
+      {
+        "id": 12,
+        "imageUrl": "https://dodopizza-a.akamaihd.net/static/Img/Products/163d95b8408843419b0c8ee18aa2452b_584x584.jpeg",
+        "name": "Аррива!",
+        "types" : [0],
+        "sizes" : [26,30],
+        "price" : 395,
+        "category" : 0,
+        "rating": 5
+      },
+      {
+        "id": 13,
+        "imageUrl": "https://dodopizza-a.akamaihd.net/static/Img/Products/5630c6ed3f394c7ba25e1ef79a67b7ee_584x584.jpeg",
+        "name": "Ветчина и сыр",
+        "types" : [0,1],
+        "sizes" : [26,30,40],
+        "price" : 295,
+        "category" : 3,
+        "rating": 6
+      },
+      {
+        "id": 14,
+        "imageUrl": "https://dodopizza-a.akamaihd.net/static/Img/Products/20734006e66d427fb2cbb8fbb595b21e_584x584.jpeg",
+        "name": "Колбаски барбекю",
+        "types" : [1],
+        "sizes" : [26,40],
+        "price" : 395,
+        "category" : 2,
+        "rating": 6
+      },
+      {
+        "id": 15,
+        "imageUrl": "https://dodopizza-a.akamaihd.net/static/Img/Products/afb7bb96c6624a17b69543db3b340c86_584x584.jpeg",
+        "name": "Мясная",
+        "types" : [0,1],
+        "sizes" : [26,30],
+        "price" : 445,
+        "category" : 0,
+        "rating": 6
+      },
+      {
+        "id": 16,
+        "imageUrl": "https://dodopizza-a.akamaihd.net/static/Img/Products/c069fc6e169c4d4eae80e319b1d979e7_292x292.jpeg",
+        "name": "Пицца-пирог 🌱👶",
+        "types" : [1],
+        "sizes" : [26,30],
+        "price" : 345,
+        "category" : 1,
+        "rating": 3
+      },
+      {
+        "id": 17,
+        "imageUrl": "https://dodopizza-a.akamaihd.net/static/Img/Products/8010e67d4dec4b3c93008b77407dd9d8_292x292.jpeg",
+        "name": "Зенит",
+        "types" : [0],
+        "sizes" : [26,40],
+        "price" : 395,
+        "category" : 3,
+        "rating": 5
+      },
+      {
+        "id": 18,
+        "imageUrl": "https://dodopizza-a.akamaihd.net/static/Img/Products/7a8164f7c43646e19c20001eaec9b031_584x584.jpeg",
+        "name": "Карбонара",
+        "types" : [0,1],
+        "sizes" : [26,30,40],
+        "price" : 445,
+        "category" : 0,
+        "rating": 7
       }
     ]
   }
