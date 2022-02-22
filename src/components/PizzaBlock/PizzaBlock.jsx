@@ -1,30 +1,39 @@
-import React, { useState, useSelector } from 'react'
+import React, { useState } from 'react'
 import classNames from 'classnames'
 import PropTypes from 'prop-types'
+import Button from '../button/Button'
 
 
 
-
-const PizzaBlock = ({ name, price, imageUrl, types, sizes }) => {
+const PizzaBlock = ({ id, name, price, imageUrl, types, sizes, onClickAddPizza, addedCount }) => {
     
     // Создаем массив с данными для отображения(Временно)
-    const availableTypes = ['тонкое', "традиционное"]
-    const availableSize = [26, 30, 40]
-    
-    // Используем хук для проверки загрузки наших блоков
-    
+    const availableTypes = ['тонкое', "традиционное"];
+    const availableSize = [26, 30, 40];
 
     // Используем хук для изменения активного класса у элементов
-    const [activeType, setActiveType] = useState(types[0])
-    const [activeSize, setActiveSize] = useState(sizes[0])
+    const [activeType, setActiveType] = useState(types[0]);
+    const [activeSize, setActiveSize] = useState(0);
     
     // Функции для переключения классов
     const onSelectType = (index) => {
-        setActiveType(index)
+        setActiveType(index);
     } 
 
     const onSelectSize = (index) => {
-        setActiveSize(index)
+        setActiveSize(index);
+    }
+
+    const handleAddPizza = () => {
+        const obj = {
+            id,
+            name,
+            imageUrl,
+            price,
+            size : availableSize[activeSize],
+            type : availableTypes[activeType]
+        }
+        onClickAddPizza(obj);
     }
 
     return (
@@ -59,7 +68,7 @@ const PizzaBlock = ({ name, price, imageUrl, types, sizes }) => {
             </div>
             <div className="pizza-block__bottom">
                 <div className="pizza-block__price">от {price} ₽</div>
-                <div className="button button--outline button--add">
+                <Button onClick={handleAddPizza} className="button--add" outline>
                 <svg
                  width="12"
                  height="12"
@@ -73,8 +82,10 @@ const PizzaBlock = ({ name, price, imageUrl, types, sizes }) => {
                  />
              </svg>
              <span>Добавить</span>
-             <i>2</i>
-                </div>
+             { addedCount 
+             ? <i>{addedCount}</i> 
+             : ''}
+                </Button>
             </div>
         </div>
     )

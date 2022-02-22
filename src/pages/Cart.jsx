@@ -1,6 +1,11 @@
 import React from "react";
+import { useSelector } from "react-redux";
 
 const Cart = () => {
+
+  
+  const { totalPrice, totalCount } = useSelector(({ cart }) => cart)
+
   return (
     <div className="content">
       <div className="container container--cart">
@@ -385,11 +390,11 @@ const Cart = () => {
             <div className="cart__bottom-details">
               <span>
                 {" "}
-                Всего пицц: <b>3 шт.</b>{" "}
+                Всего пицц: <b>{totalCount} шт.</b>{" "}
               </span>
               <span>
                 {" "}
-                Сумма заказа: <b>900 ₽</b>{" "}
+                Сумма заказа: <b>{totalPrice} ₽</b>{" "}
               </span>
             </div>
             <div className="cart__bottom-buttons">

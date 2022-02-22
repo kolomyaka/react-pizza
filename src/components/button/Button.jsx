@@ -1,16 +1,15 @@
 import React from 'react';
 import classNames from 'classnames'
 
-const Button = (props) => {
-    console.log(props);
+const Button = ({onClick, className, outline, textForButton, children}) => {
     
     return (
         <button 
-            onClick={props.clickOnButton} 
-            className={classNames('button',
+            onClick={onClick} 
+            className={classNames('button', className,
             {  // С помощью библиотеки проверяем наличие класса у компоненты
-                'button--outline' : props.outline,
-            })}>{props.textForButton}
+                'button--outline' : outline,
+            })}>{textForButton}{children}
         </button>
     )
     
