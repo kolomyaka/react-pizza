@@ -8,7 +8,7 @@ export const fetchPizzas = (sortBy, category) => (dispatch) => {
     dispatch(setLoading(false));
     // TODO - Разделить логику получения данных от сервера и отправки данных в редакс
     
-    axios.get(`http://localhost:3001/pizzas?${category !== null ? `category=${category}` : ''}&_sort=${sortBy}&_order=desc`).then(({ data }) => {
+    axios.get(`/pizzas?${category !== null ? `category=${category}` : ''}&_sort=${sortBy}&_order=desc`).then(({ data }) => {
         dispatch(setPizzas(data));  // Диспатч уведомляет redux об изменении
     });
 

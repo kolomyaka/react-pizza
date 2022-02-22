@@ -35,7 +35,7 @@ const PizzaBlock = ({ id, name, price, imageUrl, types, sizes, onClickAddPizza, 
         }
         onClickAddPizza(obj);
     }
-
+    
     return (
         <div className="pizza-block">
             <img className='pizza-block__image'

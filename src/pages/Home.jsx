@@ -25,6 +25,7 @@ const Home = () => {
 
     const cartItems = useSelector(({ cart }) => cart.items);
 
+    
 
     // Из state берем данные по выбранной категории и сортировке.
     const { category, sortBy, sortByType } = useSelector(({ filters }) => filters);
@@ -62,7 +63,7 @@ const Home = () => {
                    .fill(0)
                    .map((_,index) => <PizzaLoadingBlock key={index} />)
                    : state.pizzas && state.pizzas.map(pizza => <PizzaBlock key={pizza.id}
-                    onClickAddPizza={handleAddPizza} addedCount={cartItems[pizza.id] && cartItems[pizza.id].length} {...pizza} />)
+                    onClickAddPizza={handleAddPizza} addedCount={cartItems[pizza.id] && cartItems[pizza.id].items.length} {...pizza} />)
                }
 
             </div>
