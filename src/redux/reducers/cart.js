@@ -30,18 +30,16 @@ const cartReducer = (state = initialState, action) => {
             },
 
         };
-        // Переменная для получения всех пицц
-        // 1. Создаем пустой массив
-        // 2. Методом конкат объединяем массивы, которые хранятся в newItems (Наши пиццы)
-        const items = Object.values(newItems).map(obj => obj.items); 
-        const allPizzas = [].concat.apply([], items);
-        const totalPrice = getTotalPrice(allPizzas)
+        const totalCount = Object.keys(newItems).reduce((sum, key) => newItems[key].items.length + sum, 0)
+        const totalPrice = Object.keys(newItems).reduce((sum, key) => newItems[key].totalPrice + sum, 0)
         
+        
+
         return {
             ...state,
             items : newItems,
             // Получаем длинну массива, которая и является кол-вом добавленных в корзину пицц
-            totalCount : allPizzas.length,
+            totalCount,
             // Прибавляем цену каждой пицы и получаем итоговую стоимость добавл. товаров в корз
             totalPrice
         };
@@ -66,10 +64,14 @@ const cartReducer = (state = initialState, action) => {
         const newItems = {
             ...state.items
         }
+        const priceDeleteItem = newItems[action.payload].totalPrice;  // Сохр. значение цены пиццы, которую хотим удалить
+        const countDeleteItem = newItems[action.payload].items.length; // Сохр. знач. кол-ва пицц, которую хотим удалить
         delete newItems[action.payload];
         return {
             ...state,
-            items: newItems
+            items: newItems,
+            totalPrice : state.totalPrice - priceDeleteItem,
+            totalCount : state.totalCount - countDeleteItem,
         }
     }
   default:
