@@ -7,17 +7,17 @@ export const clearCart = () => ({
     type : 'CLEAR_CART',
 })
 
-export const deleteCurrentPizza = (id) => ({
+export const deleteCurrentPizza = (id: number) => ({
     type : 'DELETE_CURRENT_PIZZA',
     payload : id
 })
 
-export const addOneItem = (id) => ({
+export const addOneItem = (id: number) => ({
     type: "ADD_ONE_ITEM",
     payload: id
 })
 
-export const removeOneItem = (id) => ({
+export const removeOneItem = (id: number) => ({
     type: "REMOVE_ONE_ITEM",
     payload: id
 })

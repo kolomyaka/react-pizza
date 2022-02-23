@@ -7,7 +7,11 @@ const initialState = {
     sortByType : 'rating'
 };
 
-const filterReducer = (state = initialState, action) => {
+export type InitialStateType = typeof initialState;
+
+
+
+const filterReducer = (state = initialState, action:any): InitialStateType => {
   switch (action.type) {
 
   case SET_SORT_BY:

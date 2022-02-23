@@ -7,7 +7,9 @@ const initialState = {
     isLoaded : false,
 }
 
-const pizzasReducer = (state = initialState, action) => {
+export type InitialStateType = typeof initialState;
+
+const pizzasReducer = (state = initialState, action: any): InitialStateType => {
   switch (action.type) {
 
   case SET_PIZZAS:
