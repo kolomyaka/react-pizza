@@ -31,6 +31,7 @@ const CartItems : React.FC<PropsType> = ({ name, size, type, totalPrice, totalCo
 
   return (
     <div className="cart__item">
+      <div className="cart__item-info-block">
       <div className="cart__item-img">
         <img
           className="pizza-block__image"
@@ -42,6 +43,8 @@ const CartItems : React.FC<PropsType> = ({ name, size, type, totalPrice, totalCo
         <h3>{name}</h3>
         <p>{type} тесто, {size} см.</p>
       </div>
+      </div>
+      <div className="cart__item-count-block">
       <div className="cart__item-count">
         <div onClick={handleRemoveItem} className="button button--outline button--circle cart__item-count-minus">
           <svg
@@ -84,6 +87,7 @@ const CartItems : React.FC<PropsType> = ({ name, size, type, totalPrice, totalCo
       <div className="cart__item-price">
         <b>{totalPrice} ₽</b>
       </div>
+      
       <div className="cart__item-remove">
         <Button outline className="button--circle" onClick={handleRemoveClick}>
           <svg
@@ -103,6 +107,7 @@ const CartItems : React.FC<PropsType> = ({ name, size, type, totalPrice, totalCo
             />
           </svg>
         </Button>
+        </div>
       </div>
     </div>
   );

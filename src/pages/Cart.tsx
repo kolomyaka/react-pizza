@@ -26,17 +26,17 @@ const Cart = () => {
     }
   }
 
-  const removePizza = (id) => {
+  const removePizza = (id: number) => {
     if (window.confirm('Вы действительно хотите удалить?')) {
       dispatch(deleteCurrentPizza(id));
     }
   }
 
-  const onPlusItem = (id) => {
+  const onPlusItem = (id: number) => {
     dispatch(addOneItem(id))
   }
 
-  const onRemoveItem = (id) => {
+  const onRemoveItem = (id: number) => {
     dispatch(removeOneItem(id))
   }
 
