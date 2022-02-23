@@ -8,18 +8,13 @@ const ADD_ONE_ITEM = "ADD_ONE_ITEM";
 const REMOVE_ONE_ITEM = "REMOVE_ONE_ITEM";
 
 const initialState = {
-  items: null,
+  items: {},
   totalCount: 0,
   totalPrice: 0,
 };
 
-export type InitialStateType = {
-  items : {} | Array<PizzaObjForCart>
-  totalCount : number
-  totalPrice : number
-}
 
-// export type InitialStateType = typeof initialState;
+export type InitialStateType = typeof initialState;
 
 // Функция для подсчета итоговой стоимости в массиве
 // Используем здесь, чтобы не производить подсчеты в UI.
@@ -27,6 +22,7 @@ const getTotalPrice = (arr: Array<PizzaObj>) => arr.reduce((sum, obj) => obj.pri
 
 const cartReducer = (state = initialState, action: ActionsTypes): InitialStateType => {
   switch (action.type) {
+    
     case ADD_PIZZA_CART: {
       const currentPizzaItems = !state.items[action.payload.id] // Проверяем есть ли у нас что-то в корзине
         ? [action.payload] // Если нету, то просто создаем новый элемент массива

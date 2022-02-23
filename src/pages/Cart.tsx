@@ -4,7 +4,8 @@ import { useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
 
 import { CartItem } from "../components";
-import { clearCart, deleteCurrentPizza, addOneItem, removeOneItem } from '../redux/actions/cart'
+//@ts-ignore
+import { clearCart, deleteCurrentPizza, addOneItem, removeOneItem } from '../redux/actions/cart.ts'
 import emptyCart from '../assets/img/empty-cart.png'
 import { AppStateType } from "../redux/reducers";
 

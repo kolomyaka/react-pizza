@@ -23,8 +23,12 @@ const Home = () => {
     // useSelector позволяет взять какие-либо данные из state.
     const { pizzas, isLoaded} = useSelector<AppStateType, any>(({ pizzas }) => pizzas);
 
-    const {cartItems} = useSelector<AppStateType, any>(({ cart }) => cart);
+    // @ts-ignore
+    const cartItems = useSelector(({cart}) => cart.items);
 
+    console.log(pizzas);
+    console.log(cartItems);
+    
     
 
     // Из state берем данные по выбранной категории и сортировке.
