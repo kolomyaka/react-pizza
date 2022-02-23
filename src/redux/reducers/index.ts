@@ -1,6 +1,7 @@
 import { Action, combineReducers } from 'redux';
 // @ts-ignore
 import filters  from './filters.ts'; import pizzas from './pizzas.ts'; import cart from './cart.ts';
+
 import { ThunkAction } from 'redux-thunk';
 
 import { createStore, compose, applyMiddleware } from 'redux';

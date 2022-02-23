@@ -3,8 +3,13 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import { fetchPizzas } from '../redux/actions/pizzas' 
 import { Categories, SortPopup, PizzaBlock, PizzaLoadingBlock } from '../components';
-import { setCategory, setSort } from '../redux/actions/filters.ts'
-import { addPizzaToCart } from '../redux/actions/cart.ts'
+// @ts-ignore
+import { setCategory, setSort } from '../redux/actions/filters.ts'; import { addPizzaToCart } from '../redux/actions/cart.ts'
+import { AppStateType } from '../redux/reducers';
+
+
+
+
 
 const categoriesNames = ["Мясные",'Вегетарианские',"Гриль","Острые","Закрытые"];
 const sortItems = [{ name : "популярности", type : 'rating' },
@@ -16,19 +21,14 @@ const Home = () => {
     const dispatch = useDispatch();
 
     // useSelector позволяет взять какие-либо данные из state.
-    const state = useSelector((state) => {
-        return {
-          pizzas : state.pizzas.pizzas,
-          isLoaded : state.pizzas.isLoaded,
-        };
-    });
+    const { pizzas, isLoaded} = useSelector<AppStateType, any>(({ pizzas }) => pizzas);
 
-    const cartItems = useSelector(({ cart }) => cart.items);
+    const {cartItems} = useSelector<AppStateType, any>(({ cart }) => cart);
 
     
 
     // Из state берем данные по выбранной категории и сортировке.
-    const { category, sortBy, sortByType } = useSelector(({ filters }) => filters);
+    const { category, sortBy, sortByType } = useSelector<AppStateType, any>(({ filters }) => filters);
 
     // Функции для передачи данных в redux о выбранной категории/сортировки.
     const onSelectCategory = React.useCallback((index) => {
@@ -58,11 +58,11 @@ const Home = () => {
             <div className="content__items">
             
                {
-                   !state.isLoaded 
+                   !isLoaded 
                    ? Array(12)
                    .fill(0)
                    .map((_,index) => <PizzaLoadingBlock key={index} />)
-                   : state.pizzas && state.pizzas.map(pizza => <PizzaBlock key={pizza.id}
+                   : pizzas && pizzas.map(pizza => <PizzaBlock key={pizza.id}
                     onClickAddPizza={handleAddPizza} addedCount={cartItems[pizza.id] && cartItems[pizza.id].items.length} {...pizza} />)
                }
 

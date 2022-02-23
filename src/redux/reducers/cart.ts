@@ -1,5 +1,5 @@
 import { InferActionTypes } from ".";
-import { PizzaObj } from "../../types/types";
+import { PizzaObj, PizzaObjForCart } from "../../types/types";
 
 const ADD_PIZZA_CART = "ADD_PIZZA_CART";
 const CLEAR_CART = "CLEAR_CART";
@@ -8,12 +8,18 @@ const ADD_ONE_ITEM = "ADD_ONE_ITEM";
 const REMOVE_ONE_ITEM = "REMOVE_ONE_ITEM";
 
 const initialState = {
-  items: {},
+  items: null,
   totalCount: 0,
   totalPrice: 0,
 };
 
-export type InitialStateType = typeof initialState;
+export type InitialStateType = {
+  items : {} | Array<PizzaObjForCart>
+  totalCount : number
+  totalPrice : number
+}
+
+// export type InitialStateType = typeof initialState;
 
 // Функция для подсчета итоговой стоимости в массиве
 // Используем здесь, чтобы не производить подсчеты в UI.

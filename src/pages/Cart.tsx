@@ -4,13 +4,15 @@ import { useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
 
 import { CartItem } from "../components";
-import { clearCart, deleteCurrentPizza, addOneItem, removeOneItem } from '../redux/actions/cart.ts'
+import { clearCart, deleteCurrentPizza, addOneItem, removeOneItem } from '../redux/actions/cart'
 import emptyCart from '../assets/img/empty-cart.png'
+import { AppStateType } from "../redux/reducers";
+
 
 const Cart = () => {
   
   const dispatch = useDispatch();
-  const { totalPrice, totalCount, items }  = useSelector(({ cart }) => cart)
+  const { totalPrice, totalCount, items }  = useSelector<AppStateType, any>(({ cart}) => cart)
   
   const addedPizzas = Object.keys(items).map(key => {
     return items[key].items[0];

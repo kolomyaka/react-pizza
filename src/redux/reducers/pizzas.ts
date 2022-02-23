@@ -1,6 +1,5 @@
 import axios from "axios";
 import { BaseThunkType, InferActionTypes } from ".";
-import { PizzaObj } from "../../types/types";
 import { setLoading, setPizzas } from "../actions/pizzas";
 
 const SET_PIZZAS = 'SET_PIZZAS';
