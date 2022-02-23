@@ -4,7 +4,7 @@ import { useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
 
 import { CartItem } from "../components";
-import { clearCart, deleteCurrentPizza, addOneItem, removeOneItem } from '../redux/actions/cart'
+import { clearCart, deleteCurrentPizza, addOneItem, removeOneItem } from '../redux/actions/cart.ts'
 import emptyCart from '../assets/img/empty-cart.png'
 
 const Cart = () => {

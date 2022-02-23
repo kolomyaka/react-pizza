@@ -3,7 +3,8 @@ import { Route, Routes } from 'react-router-dom';
 
 
 import { Header } from './components';
-import { Home, Cart } from './pages'
+import Home from './pages/Home'
+import Cart from './pages/Cart'
 import './scss/app.scss';
 
 

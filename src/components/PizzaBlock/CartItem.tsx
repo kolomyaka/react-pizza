@@ -1,7 +1,21 @@
 import React from "react";
-import Button from "../button/Button";
+// @ts-ignore
+import Button from "../button/Button.tsx";
 
-const CartItems = ({ name, size, type, totalPrice, totalCount, onRemove, id,onPlusOneCartItem, onRemoveOneCartItem }) => {
+
+type PropsType = {
+  name : string
+  size : Array<number>
+  type : Array<number>
+  totalPrice : number
+  totalCount : number
+  id : number
+  onRemove : (id: number) => void
+  onPlusOneCartItem : (id : number) => void
+  onRemoveOneCartItem : (id : number) => void
+}
+
+const CartItems : React.FC<PropsType> = ({ name, size, type, totalPrice, totalCount, onRemove, id,onPlusOneCartItem, onRemoveOneCartItem }) => {
   
   const handleRemoveClick = () => {
     onRemove(id);

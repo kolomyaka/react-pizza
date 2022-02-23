@@ -1,7 +1,13 @@
-import React, {useEffect, useState} from 'react'
+import React from 'react'
 
 
-const Categories = React.memo(function Categories({ activeCategory, items, onClickItem }) {
+type PropsType = {
+  activeCategory : number
+  items : any
+  onClickItem : (index: number) => void
+}
+
+const Categories : React.FC<PropsType> = React.memo(function Categories({ activeCategory, items, onClickItem }) {
 
   
   return (

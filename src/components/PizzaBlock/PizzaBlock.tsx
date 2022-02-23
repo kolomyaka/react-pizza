@@ -1,11 +1,22 @@
 import React, { useState } from 'react'
 import classNames from 'classnames'
-import PropTypes from 'prop-types'
-import Button from '../button/Button'
+// @ts-ignore
+import Button from '../button/Button.tsx'
+import { PizzaObjForCart } from '../../types/types'
 
 
+type PropsType = {
+    id: number
+    name : string
+    imageUrl : string
+    types : Array<number>
+    sizes : Array<number>
+    price : number
+    addedCount : number
+    onClickAddPizza : (obj : PizzaObjForCart ) => void 
+}
 
-const PizzaBlock = ({ id, name, price, imageUrl, types, sizes, onClickAddPizza, addedCount }) => {
+const PizzaBlock : React.FC<PropsType> = ({ id, name, price, imageUrl, types, sizes, addedCount, onClickAddPizza }) => {
     
     // Создаем массив с данными для отображения(Временно)
     const availableTypes = ['тонкое', "традиционное"];
@@ -91,22 +102,5 @@ const PizzaBlock = ({ id, name, price, imageUrl, types, sizes, onClickAddPizza, 
     )
 }
     
-// TODO   do on TS!
-PizzaBlock.propTypes = {
-    name : PropTypes.string,
-    imageUrl : PropTypes.string,
-    price : PropTypes.number,
-    types : PropTypes.arrayOf(PropTypes.number),
-    sizes : PropTypes.arrayOf(PropTypes.number)
-}
-
-PizzaBlock.defaultProps = {
-    types : [],
-    sizes : [],
-    name : '---',
-    imageUrl : '---',
-    price : '999.999'
-};
-
 
 export default PizzaBlock

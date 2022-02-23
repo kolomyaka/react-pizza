@@ -1,4 +1,4 @@
-import { InferActionTypes } from './index';
+import { InferActionTypes } from '.';
 const SET_CATEGORY = 'SET_CATEGORY'
 const SET_SORT_BY = 'SET_SORT_BY'
 

@@ -1,14 +1,22 @@
 import React, {useState, useEffect, useRef} from 'react'
+import { SortItem } from '../../types/types';
+
+
+type PropsType = {
+    items : Array<SortItem>
+    activeSortType : number
+    onClickItem : (index: number, type : string) => void
+}
 
 
 // Благодаря memo проверяем ссылку на props и мы можем не делать лишний рендер
 // Альтернатива в класс. компон. shouldComponentUpdate
-const SortPopup = React.memo(function SortPopup({ items, onClickItem, activeSortType }) {
+const SortPopup: React.FC<PropsType>= React.memo(function SortPopup({ items, onClickItem, activeSortType }) {
     
     const [visiblePopup, setVisiblePopup] = useState(false)
     const sortRef = useRef();  // Сохраняем ссылку на DOM-el
 
-    const toggleVisiblePop = (e) => {
+    const toggleVisiblePop = (e:any) => {
         setVisiblePopup(!visiblePopup)
     
     }
@@ -18,7 +26,7 @@ const SortPopup = React.memo(function SortPopup({ items, onClickItem, activeSort
     }, []) // К кв. скобках можем указать зависимость для отрисовки
     // Если оставим их пустыми, то хук будет срабатывать только при первой отрисовки
     
-    const handleOutsideClick = (e) => {
+    const handleOutsideClick = (e:any) => {
         // Для работы в fireFox
         const path = e.path || (e.composedPath && e.composedPath());
         if (!path.includes(sortRef.current)) {

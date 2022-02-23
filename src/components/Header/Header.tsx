@@ -1,12 +1,13 @@
 import pizzaLogo from '../../assets/img/pizza-logo.svg';
-import ShoppingButton from "../button/ShoppingButton";
+
 
 import { NavLink } from 'react-router-dom' 
 import { useSelector } from 'react-redux';
+import { AppStateType } from '../../redux/reducers';
 
 const Header = () => {
     
-    const {totalPrice, totalCount} = useSelector(({ cart }) => cart);
+    const {totalPrice, totalCount} = useSelector<AppStateType, any>(({ cart }) => cart);
 
     return (
         <div className="header">
@@ -56,7 +57,7 @@ const Header = () => {
             <span>{totalCount}</span>
             </NavLink>
         </div>  
-                {/* <ShoppingButton /> */}
+                
             </div>
         </div>
     )

@@ -3,8 +3,8 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import { fetchPizzas } from '../redux/actions/pizzas' 
 import { Categories, SortPopup, PizzaBlock, PizzaLoadingBlock } from '../components';
-import { setCategory, setSort } from '../redux/actions/filters'
-import { addPizzaToCart } from '../redux/actions/cart'
+import { setCategory, setSort } from '../redux/actions/filters.ts'
+import { addPizzaToCart } from '../redux/actions/cart.ts'
 
 const categoriesNames = ["Мясные",'Вегетарианские',"Гриль","Острые","Закрытые"];
 const sortItems = [{ name : "популярности", type : 'rating' },
