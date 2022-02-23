@@ -1,5 +1,6 @@
-const SET_TOTAL_PRICE = "SET_TOTAL_PRICE";
-const SET_TOTAL_COUNT = "SET_TOTAL_COUNT";
+import { InferActionTypes } from ".";
+import { PizzaObj } from "../../types/types";
+
 const ADD_PIZZA_CART = "ADD_PIZZA_CART";
 const CLEAR_CART = "CLEAR_CART";
 const DELETE_CURRENT_PIZZA = "DELETE_CURRENT_PIZZA";
@@ -12,11 +13,13 @@ const initialState = {
   totalPrice: 0,
 };
 
+export type InitialStateType = typeof initialState;
+
 // Функция для подсчета итоговой стоимости в массиве
 // Используем здесь, чтобы не производить подсчеты в UI.
-const getTotalPrice = (arr) => arr.reduce((sum, obj) => obj.price + sum, 0);
+const getTotalPrice = (arr: Array<PizzaObj>) => arr.reduce((sum, obj) => obj.price + sum, 0);
 
-const cartReducer = (state = initialState, action) => {
+const cartReducer = (state = initialState, action: ActionsTypes): InitialStateType => {
   switch (action.type) {
     case ADD_PIZZA_CART: {
       const currentPizzaItems = !state.items[action.payload.id] // Проверяем есть ли у нас что-то в корзине
@@ -50,16 +53,6 @@ const cartReducer = (state = initialState, action) => {
         totalPrice,
       };
     }
-    case SET_TOTAL_PRICE:
-      return {
-        ...state,
-        totalPrice: action.payload,
-      };
-    case SET_TOTAL_COUNT:
-      return {
-        ...state,
-        totalCount: action.payload,
-      };
     case CLEAR_CART: // Очистка корзины
       return {
         items: {},
@@ -141,5 +134,16 @@ const cartReducer = (state = initialState, action) => {
       return state;
   }
 };
+
+const actions = {
+  addPizzaToCart : (pizzaObj: any) => ({ type : ADD_PIZZA_CART,payload: pizzaObj } as const), 
+  clearCart : () => ({ type : CLEAR_CART} as const),
+  deleteCurrentPizza : (id: number) => ({ type: DELETE_CURRENT_PIZZA,payload: id} as const),
+  addOneItem : (id: number) => ({ type: ADD_ONE_ITEM,payload: id} as const),
+  removeOneItem : (id: number) => ({ type: REMOVE_ONE_ITEM,payload: id} as const),
+}
+
+type ActionsTypes = InferActionTypes<typeof actions>
+
 
 export default cartReducer;

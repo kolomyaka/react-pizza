@@ -1,4 +1,4 @@
-export const setSort = ( sortBy, sortByType ) => ({
+export const setSort = ( sortBy: number, sortByType: string ) => ({
     type : 'SET_SORT_BY',
     payload : {
         sortBy,
@@ -6,7 +6,7 @@ export const setSort = ( sortBy, sortByType ) => ({
     }
 });
 
-export const setCategory = ( catIndex ) => ({
+export const setCategory = ( catIndex: number ) => ({
     type : 'SET_CATEGORY',
     payload : catIndex,
 })
