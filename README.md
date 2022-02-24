@@ -5,6 +5,7 @@
 - React Router (библиотека для реализации переходов без перезагрузки страницы).
 - Axios (библиотека для отправки AJAX-запросов)
 - json-server (для хранения пицц на фейковом сервере)
+- React Content Loader (React Skeleton)
 - classnames
 
 https://react-pizza-kolomyaka.herokuapp.com/
