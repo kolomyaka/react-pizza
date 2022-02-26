@@ -1,12 +1,12 @@
 @import 'fonts.scss';
 @import 'variables.scss';
 @import 'libs/normalize';
-
 @import 'components/all';
 
 body {
   background-color: $background;
   padding-top: 50px;
+  padding-bottom: 50px;
 }
 
 .wrapper {
@@ -390,21 +390,12 @@ body {
   }
   & a {
     padding: 5px 10px;
-
   }
 }
-  
 }
 
 
 @media screen and (max-width: 970px) {
-  .categories ul {
-    
-    
-    & li {
-      
-    }
-  }
   .content {
     &__top {
       
@@ -414,11 +405,7 @@ body {
       margin: 0 auto;
     }
   }
-  .categories {
-    &__list {
-      &-large {
-        display: none;
-      }
-    }
+  .pizza-block {
+    margin: 15px auto;
   }
 }

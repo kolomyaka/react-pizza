@@ -11,10 +11,6 @@ import gril from '../assets/img/gril.png';
 import spicy from '../assets/img/spicy.png';
 import meatActive from '../assets/img/meatActive.png';
 
-console.log(vegan);
-
-
-
 
 const categoriesNames = ["Мясные",'Вегетарианские',"Гриль","Острые","Закрытые"];
 const categoriesItems = [{ name : 'Мясные', icon : meatActive},

@@ -3,7 +3,9 @@
 .header {
   border-bottom: 1px solid $gray-line;
   padding: 40px 0;
-
+  &__cart-price {
+    padding-right: 5px;
+  }
   .container {
     display: flex;
     align-items: center;
