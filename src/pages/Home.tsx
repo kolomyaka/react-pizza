@@ -6,12 +6,22 @@ import { Categories, SortPopup, PizzaBlock, PizzaLoadingBlock } from '../compone
 // @ts-ignore
 import { setCategory, setSort } from '../redux/actions/filters.ts'; import { addPizzaToCart } from '../redux/actions/cart.ts'
 import { AppStateType } from '../redux/reducers';
+import vegan from '../assets/img/vegan.png';
+import gril from '../assets/img/gril.png';
+import spicy from '../assets/img/spicy.png';
+import meatActive from '../assets/img/meatActive.png';
 
+console.log(vegan);
 
 
 
 
 const categoriesNames = ["Мясные",'Вегетарианские',"Гриль","Острые","Закрытые"];
+const categoriesItems = [{ name : 'Мясные', icon : meatActive},
+                         { name : 'Вегетарианские', icon : vegan},
+                         { name : 'Гриль', icon : gril},
+                         { name : 'Острые', icon : spicy}                        
+]
 const sortItems = [{ name : "популярности", type : 'rating' },
                    { name : "цене", type : 'price' },
                    { name : "алфавиту" , type : 'name' }]
@@ -25,11 +35,6 @@ const Home = () => {
 
     // @ts-ignore
     const cartItems = useSelector(({cart}) => cart.items);
-
-    console.log(pizzas);
-    console.log(cartItems);
-    
-    
 
     // Из state берем данные по выбранной категории и сортировке.
     const { category, sortBy, sortByType } = useSelector<AppStateType, any>(({ filters }) => filters);
@@ -55,10 +60,10 @@ const Home = () => {
     return (
         <div className="container">
             <div className="content__top">
-                <Categories onClickItem={onSelectCategory} activeCategory={category} items={categoriesNames} />
+                <Categories onClickItem={onSelectCategory} activeCategory={category} items={categoriesItems} />
                 <SortPopup items={sortItems} activeSortType={sortBy} onClickItem={onSelectSortBy} />
             </div>
-            <h2 className="content__title">Все пиццы</h2>
+            <h2 className="content__title">{categoriesNames[category] ? categoriesNames[category] : 'Все пиццы'}</h2>
             <div className="content__items">
             
                {

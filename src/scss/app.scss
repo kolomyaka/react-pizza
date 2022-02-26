@@ -50,24 +50,7 @@ body {
   }
 }
 
-@media screen and (max-width: 970px) {
-  .categories ul {
-    display: block;
-    width: 30%;
-    & li {
-      width: 250px;
-    }
-  }
-  .content {
-    &__top {
-      display: flex;
-    }
-    &__items {
-      width: 90%;
-      margin: 0 auto;
-    }
-  }
-}
+
 
 @media screen and (max-width: 700px) {
   .content {
@@ -411,4 +394,31 @@ body {
   }
 }
   
+}
+
+
+@media screen and (max-width: 970px) {
+  .categories ul {
+    
+    
+    & li {
+      
+    }
+  }
+  .content {
+    &__top {
+      
+    }
+    &__items {
+      width: 90%;
+      margin: 0 auto;
+    }
+  }
+  .categories {
+    &__list {
+      &-large {
+        display: none;
+      }
+    }
+  }
 }

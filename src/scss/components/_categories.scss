@@ -13,6 +13,8 @@
       cursor: pointer;
       transition: background-color 0.1s ease-in-out;
       @include noselect();
+      display: flex;
+      align-items: center;
 
       &:hover {
         background-color: darken(#f9f9f9, 2%);
@@ -25,7 +27,31 @@
       &.active {
         background-color: #282828;
         color: #fff;
+        & span {
+          color : #fff;
+        }
       }
+    }
+  }
+  &__icon {
+    width: 20px;
+    height: 20px;
+    margin-left: 15px;
+  }
+}
+
+@media screen and (max-width: 970px) {
+  .categories {
+    display: block;
+    &__item {
+      display: none;
+    }
+    & ul li {
+      width: 50px;
+      padding: 13px 13px;
+    }
+    &__icon {
+      margin-left: 0;
     }
   }
 }
